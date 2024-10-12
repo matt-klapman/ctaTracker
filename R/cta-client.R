@@ -1,16 +1,53 @@
-
+#' R6 class for accessing the CTA Transit Tracker API
+#'
+#' @description
+#' A client to access the CTA Transit Tracker API. Can make requests to the API
+#' as long as the user has their API Key set in their R environ as `TRAIN_KEY`.
+#'
+#' @export
+#'
 ctaclient <- R6::R6Class(
   classname = "ctaClient",
   public = list(
-    api_url = "http://lapi.transitchicago.com/api/1.0",
+    
+    #' @field api_url The base URL for the api. Generally shouldn't need to change,
+    #' but leaving room for accessing future CTA APIs.
+    api_url = NULL,
+    
+    #' @field last_request The last API request set up via `request()`
     last_request = NULL,
+    
+    #' @field last_response The most recent response from the API, if one has
+    #' been made since initialization.
     last_response = NULL,
+    
+    #' @field last_response_body The body of the most recent response from the API,
+    #' typically as list.
     last_response_body = NULL,
-
+    
+    #' @description
+    #' Set up a new api client. Can change the base url here if needed.
+    #'
+    #' @param api_url The base url for the api. Will default to
+    #' "http://lapi.transitchicago.com/api/1.0" if none provided. Left for
+    #' future expansion.
+    #'
     initialize = function(api_url = NULL) {
+      self$api_url <- api_url %||% "http://lapi.transitchicago.com/api/1.0"
       return(invisible(self))
     },
     
+    
+    #' @description
+    #' Build a `httr2` request object, but don't send it just yet.
+    #'
+    #' @param verb Method for request (e.g. 'GET', 'POST', ...)
+    #' @param path Either character string or vector defining the api path appended
+    #' to the end of the base url.
+    #' @param body A list of any body contents necessary for the api request.
+    #' @param query A list of any additional query parameters to append to the
+    #' api request.
+    #'
     request = function(verb, path, body = NULL, query = NULL) {
       
       if (!is.null(query)) {
@@ -36,6 +73,9 @@ ctaclient <- R6::R6Class(
       self$last_request <- req
     },
     
+    #' @description
+    #' Actually perform the request set up by `request()`
+    #'
     send = function() {
       assertthat::assert_that(
         !is.null(self$last_request),
@@ -49,6 +89,9 @@ ctaclient <- R6::R6Class(
       return(self$last_response_body)
     },
     
+    #' @description
+    #' Print some basic information about the client.
+    #'
     print = function() {
       cat(glue::glue(
         crayon::blue("CTA Train Tracker API client\n"),

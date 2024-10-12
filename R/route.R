@@ -4,6 +4,8 @@
 #' This class can be used to grab the positions of all trains along a
 #' #' specific CTA Train Line (Brown, Red, Blue, etc.).
 #'
+#' @export
+#'
 route <- R6::R6Class(
   classname = "route",
   active = list(

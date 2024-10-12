@@ -5,7 +5,7 @@
 \title{R6 Class Representing a CTA Train Route}
 \description{
 This class can be used to grab the positions of all trains along a
-specific CTA Train Line (Brown, Red, Blue, etc.).
+#' specific CTA Train Line (Brown, Red, Blue, etc.).
 }
 \section{Public fields}{
 \if{html}{\out{<div class="r6-fields">}}
