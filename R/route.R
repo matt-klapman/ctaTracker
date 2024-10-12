@@ -1,8 +1,8 @@
 #' R6 Class Representing a CTA Train Route
 #'
 #' @description
-#' This class can be used to grab the positions of all trains along a 
-#' specific CTA Train Line (Brown, Red, Blue, etc.).
+#' This class can be used to grab the positions of all trains along a
+#' #' specific CTA Train Line (Brown, Red, Blue, etc.).
 #'
 route <- R6::R6Class(
   classname = "route",
@@ -39,20 +39,20 @@ route <- R6::R6Class(
     #' @field trains A list of trains on the route with additional information.
     trains = NULL,
     
-    #' @field time_stamp Time stamp (in US/Central time) of the most recent API 
+    #' @field time_stamp Time stamp (in US/Central time) of the most recent API
     #' call to retrieve `trains` information.
     time_stamp = NULL,
     
     #' @description
     #' Generates a new `route` object.
-    #' 
+    #'
     #' @param rt_name Name of the desired route (e.g. "Brown", "Red", ...). See
     #' `ctaTracker::train_routes` for full list of options.
-    #' 
-    #' @param client Instance of ctaclient API client to interact with the 
+    #'
+    #' @param client Instance of ctaclient API client to interact with the
     #' CTA Train Tracker API. Will default to basic client if none provided.
     #' Other values generally only needed for testing purposes.
-    #' 
+    #'
     initialize = function(rt_name, client = NULL) {
       assertthat::assert_that(
         rt_name %in% names(train_routes),
@@ -72,21 +72,31 @@ route <- R6::R6Class(
     
     #' @description
     #' Print some basic information about the route.
-    #' 
+    #'
     print = function() {
-      output <- glue::glue(
+      base_output <- glue::glue(
         crayon::blue("CTA Train Route\n"),
         crayon::green("Name: "), "{self$rt_name}\n",
         crayon::green("Code: "), "{self$rt_code}\n\n",
       )
       
-      cat(output)
+      cat(base_output)
+      
+      if (!is.null(self$trains)) {
+        train_output <- glue::glue(
+          crayon::green("Trains on route: "), length(self$trains), "\n",
+          crayon::green("Last updated: "),
+          as.character(self$time_stamp), " US/Central\n"
+        )
+        cat(train_output)
+      }
+      cat("\n")
     },
     
     #' @description
     #' Grab all current trains on the route and any information about them.
     #' Send results to `self$trains`
-    #' 
+    #'
     get_positions = function() {
       
       self$client$request(

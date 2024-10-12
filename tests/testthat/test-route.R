@@ -20,6 +20,7 @@ httptest2::with_mock_dir("route-tests", {
       route2$trains, auto_unbox = TRUE, pretty = TRUE
     ))
     
+    expect_snapshot(route2)
     expect_equal(
       route2$time_stamp,
       lubridate::as_datetime("2024-10-11 20:59:17", tz = "US/Central")
