@@ -6,6 +6,7 @@
       CTA Train Route
       Name: Brown
       Code: Brn
+      
 
 # Route get_positions works correctly
 
@@ -82,4 +83,15 @@
           "time_to_arrival": "DUE"
         }
       ] 
+
+---
+
+    Code
+      route2
+    Output
+      CTA Train Route
+      Name: Pink
+      Code: Pink
+      Trains on route: 4
+      Last updated: 2024-10-11 20:59:17 US/Central
 
