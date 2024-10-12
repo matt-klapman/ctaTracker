@@ -1,0 +1,82 @@
+{
+    "ctatt": {
+        "tmst": "2024-10-11T20:59:17",
+        "errCd": "0",
+        "errNm": null,
+        "route": [
+            {
+                "@name": "pink",
+                "train": [
+                    {
+                        "rn": "312",
+                        "destSt": "30114",
+                        "destNm": "Loop",
+                        "trDr": "1",
+                        "nextStaId": "40150",
+                        "nextStpId": "30028",
+                        "nextStaNm": "Pulaski",
+                        "prdt": "2024-10-11T20:58:30",
+                        "arrT": "2024-10-11T21:00:30",
+                        "isApp": "0",
+                        "isDly": "0",
+                        "flags": null,
+                        "lat": "41.85375",
+                        "lon": "-87.73326",
+                        "heading": "88"
+                    },
+                    {
+                        "rn": "313",
+                        "destSt": "30114",
+                        "destNm": "54th/Cermak",
+                        "trDr": "1",
+                        "nextStaId": "41510",
+                        "nextStpId": "30296",
+                        "nextStaNm": "Morgan",
+                        "prdt": "2024-10-11T20:58:26",
+                        "arrT": "2024-10-11T20:59:26",
+                        "isApp": "1",
+                        "isDly": "0",
+                        "flags": null,
+                        "lat": "41.8857",
+                        "lon": "-87.64178",
+                        "heading": "269"
+                    },
+                    {
+                        "rn": "314",
+                        "destSt": "30114",
+                        "destNm": "Loop",
+                        "trDr": "5",
+                        "nextStaId": "41160",
+                        "nextStpId": "30221",
+                        "nextStaNm": "Clinton",
+                        "prdt": "2024-10-11T20:58:34",
+                        "arrT": "2024-10-11T21:00:34",
+                        "isApp": "0",
+                        "isDly": "0",
+                        "flags": null,
+                        "lat": "41.88531",
+                        "lon": "-87.66697",
+                        "heading": "88"
+                    },
+                    {
+                        "rn": "315",
+                        "destSt": "30114",
+                        "destNm": "54th/Cermak",
+                        "trDr": "5",
+                        "nextStaId": "40440",
+                        "nextStpId": "30087",
+                        "nextStaNm": "California",
+                        "prdt": "2024-10-11T20:58:57",
+                        "arrT": "2024-10-11T20:59:57",
+                        "isApp": "1",
+                        "isDly": "0",
+                        "flags": null,
+                        "lat": "41.8544",
+                        "lon": "-87.68513",
+                        "heading": "269"
+                    }
+                ]
+            }
+        ]
+    }
+}

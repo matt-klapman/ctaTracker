@@ -6,7 +6,7 @@ ctaclient <- R6::R6Class(
     last_request = NULL,
     last_response = NULL,
     last_response_body = NULL,
-    
+
     initialize = function(api_url = NULL) {
       return(invisible(self))
     },
@@ -18,7 +18,6 @@ ctaclient <- R6::R6Class(
           is.list(query),
           msg = "`query` must be a named list of query parameters to append to your URL."
         )
-        req <- httr2::req_body_json(req, data = body)
       }
       
       req <- httr2::request(self$api_url) %>%
@@ -47,6 +46,14 @@ ctaclient <- R6::R6Class(
       
       self$last_response <- resp
       self$last_response_body <- httr2::resp_body_json(resp)
+      return(self$last_response_body)
+    },
+    
+    print = function() {
+      cat(glue::glue(
+        crayon::blue("CTA Train Tracker API client\n"),
+        crayon::green("Base URL: "), self$api_url
+      ))
     }
   ),
   

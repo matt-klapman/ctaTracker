@@ -2,4 +2,8 @@ linters: linters_with_defaults(
     line_length_linter(120),
     trailing_whitespace_linter(allow_empty_lines = TRUE)
   ) 
+exclusions: list(
+    "R/zzz.R",
+    "data-raw/."
+  )
 encoding: "UTF-8"
